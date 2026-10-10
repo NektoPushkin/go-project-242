@@ -23,14 +23,15 @@ cd go-project-242
 
 <!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
 Использование:
-   hexlet-path-size [global options] <path>
+```bash
+hexlet-path-size [global options] <path>
 
 Возможные опции:
    --human, -H      Человекочитаемые значения (автовыбор единиц) (по умолчанию: false)
    --all, -a        Учитывать скрытые файлы и директории (по умолчанию: false)
    --recursive, -r  Рекурсивный обход по субдиректориям (по умолчанию: false)
    --help, -h       вывод справки
-
+```
 Аскинема с примером использования
 https://asciinema.org/a/dJveyhPhDkWBzRp5
 
