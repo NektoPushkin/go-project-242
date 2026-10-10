@@ -16,7 +16,7 @@ func sizeToString(i64 int64, human bool) string {
 		e := math.Floor(math.Log(float64(i64)) / math.Log(unit))
 		val := float64(i64) / math.Pow(unit, e)
 
-		return fmt.Sprintf("%.2f%s", val, hSize[int(e)])
+		return fmt.Sprintf("%.1f%s", val, hSize[int(e)])
 	}
 
 	return fmt.Sprintf("%d%s", i64, hSize[0])
@@ -83,9 +83,10 @@ func calcRecursiveDir(path string, recursive bool, all bool) (int64, error) {
 				return 0, err
 			}
 			total += cTotal
-		}
+		} else {
+			total += fileInfo.Size()
 
-		total += fileInfo.Size()
+		}
 	}
 
 	return total, nil
