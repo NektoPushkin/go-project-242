@@ -68,7 +68,6 @@ func calcRecursiveDir(path string, recursive bool, all bool) (int64, error) {
 	for _, f := range dir {
 		newPath := filepath.Join(path, f.Name())
 		fileInfo, err := os.Lstat(newPath)
-		fmt.Println(fileInfo.Name())
 
 		if !all && isHiddenPath(fileInfo.Name()) {
 			continue
