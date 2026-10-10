@@ -9,7 +9,7 @@ import (
 )
 
 func sizeToString(i64 int64, human bool) string {
-	hSize := []string{"B", "kB", "MB", "GB", "TB", "PB", "EB"}
+	hSize := []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
 	var unit float64 = 1024
 
 	if human && i64 > int64(unit) {
@@ -68,6 +68,7 @@ func calcRecursiveDir(path string, recursive bool, all bool) (int64, error) {
 	for _, f := range dir {
 		newPath := filepath.Join(path, f.Name())
 		fileInfo, err := os.Lstat(newPath)
+		fmt.Println(fileInfo.Name())
 
 		if !all && isHiddenPath(fileInfo.Name()) {
 			continue
@@ -77,15 +78,18 @@ func calcRecursiveDir(path string, recursive bool, all bool) (int64, error) {
 			return 0, err
 		}
 
-		if recursive && fileInfo.IsDir() {
-			cTotal, err := calcRecursiveDir(newPath, recursive, all)
-			if err != nil {
-				return 0, err
+		if fileInfo.IsDir() {
+			if recursive {
+				cTotal, err := calcRecursiveDir(newPath, recursive, all)
+
+				if err != nil {
+					return 0, err
+				}
+
+				total += cTotal
 			}
-			total += cTotal
 		} else {
 			total += fileInfo.Size()
-
 		}
 	}
 
