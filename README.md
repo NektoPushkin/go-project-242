@@ -8,7 +8,7 @@
 
 ## Стек
 
-- Go
+- Go версии 1.26 или выше
 
 ## Установка
 
@@ -17,6 +17,7 @@
 ```bash
 git clone https://github.com/NektoPushkin/go-project-242.git
 cd go-project-242
+make
 ```
 
 ## Использование
@@ -31,6 +32,16 @@ hexlet-path-size [global options] <path>
    --all, -a        Учитывать скрытые файлы и директории (по умолчанию: false)
    --recursive, -r  Рекурсивный обход по субдиректориям (по умолчанию: false)
    --help, -h       вывод справки
+```
+
+Пример использования:
+```bash
+hexlet-path-size ./testDir -a -H -r
+```
+
+Пример вывода программы: 
+```bash
+4.1MB    ./testDir
 ```
 Аскинема с примером использования
 https://asciinema.org/a/dJveyhPhDkWBzRp5
