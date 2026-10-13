@@ -36,13 +36,9 @@ func main() {
 			},
 		},
 		Action: func(ctx context.Context, cmd *cli.Command) error {
-			path, recursive, human, all := "", false, false, false
+			recursive, human, all := false, false, false
 
-			if cmd.NArg() > 0 {
-				path = cmd.Args().Get(0)
-			}
-
-			if path == "" {
+			if cmd.NArg() == 0 {
 				return fmt.Errorf("path not specified")
 			}
 
@@ -57,14 +53,16 @@ func main() {
 			if cmd.Bool("recursive") || cmd.Bool("r") {
 				recursive = true
 			}
+			for _, path := range cmd.Args().Slice() {
+				ret, err := code.GetPathSize(path, recursive, human, all)
 
-			ret, err := code.GetPathSize(path, recursive, human, all)
+				if err != nil {
+					return err
+				}
 
-			if err != nil {
-				return err
+				fmt.Printf("%s\t%s\n", ret, path)
 			}
 
-			fmt.Printf("%s\t%s\n", ret, path)
 			return nil
 		},
 	}

@@ -2,7 +2,7 @@
 
 [![hexlet-check](https://github.com/NektoPushkin/go-project-242/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/NektoPushkin/go-project-242/actions)
 
-Консольная утилита, которая считает размер файла или директории с флагами рекурсивного обхода, человекочитаемого формата и учёта скрытых файлов.
+Консольная утилита, которая считает размер файла или директории с флагами рекурсивного обхода, человекочитаемого формата и учёта скрытых файлов. Возможен расчет размера для нескольких файлов или директорий.
 
 Учебный проект Хекслета: https://ru.hexlet.io/programs/go
 
@@ -25,7 +25,7 @@ make
 <!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
 Использование:
 ```bash
-hexlet-path-size [global options] <path>
+hexlet-path-size [global options] <path>...
 
 Возможные опции:
    --human, -H      Человекочитаемые значения (автовыбор единиц) (по умолчанию: false)
@@ -36,12 +36,13 @@ hexlet-path-size [global options] <path>
 
 Пример использования:
 ```bash
-hexlet-path-size ./testDir -a -H -r
+hexlet-path-size ./testDir ./testDir2 -a -H -r
 ```
 
 Пример вывода программы: 
 ```bash
 4.1MB    ./testDir
+5.3КB    ./testDir2
 ```
 Аскинема с примером использования
 https://asciinema.org/a/dJveyhPhDkWBzRp5
